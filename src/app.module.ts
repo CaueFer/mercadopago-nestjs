@@ -1,8 +1,14 @@
 import { Module } from '@nestjs/common';
-import { MercadoPagoModule } from './payment/mercado-pago/mercado-pago.module';
+import { ConfigModule, ConfigService } from "@nestjs/config";
+import { StripeModule } from './payment/stripe/stripe.module';
 
 @Module({
-  imports: [MercadoPagoModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    StripeModule,
+  ],
   controllers: [],
   providers: [],
 })
